@@ -181,7 +181,120 @@ background-repeat: no-repeat;
       color: #aeb9c5;
       line-height: 1.5;
     }
+.fleet-slider {
+  position: relative;
+  max-width: 1050px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #0d1a2a;
+  border: 1px solid rgba(212,175,55,.28);
+  box-shadow: 0 20px 50px rgba(0,0,0,.35);
+}
 
+.fleet-slide {
+  display: none;
+  animation: fleetFade .6s ease;
+}
+
+.fleet-slide.active {
+  display: block;
+}
+
+.fleet-slide img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+.fleet-info {
+  padding: 24px;
+  text-align: center;
+}
+
+.fleet-info h3 {
+  color: #d4af37;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.fleet-info p {
+  color: #aeb9c5;
+  margin-bottom: 18px;
+}
+
+.fleet-info a {
+  display: inline-block;
+  background: #d4af37;
+  color: #07111f;
+  text-decoration: none;
+  padding: 13px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.fleet-arrow {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  background: rgba(5,12,22,.75);
+  color: #d4af37;
+  border: 1px solid rgba(212,175,55,.5);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.fleet-prev {
+  left: 16px;
+}
+
+.fleet-next {
+  right: 16px;
+}
+
+.fleet-dots {
+  text-align: center;
+  padding-bottom: 18px;
+}
+
+.fleet-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background: #4a5563;
+  cursor: pointer;
+}
+
+.fleet-dot.active {
+  background: #d4af37;
+}
+
+@keyframes fleetFade {
+  from { opacity: .35; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  .fleet-slide img {
+    height: 300px;
+  }
+
+  .fleet-info h3 {
+    font-size: 24px;
+  }
+
+  .fleet-arrow {
+    width: 42px;
+    height: 42px;
+    font-size: 26px;
+  }
+}
     footer {
       border-top: 1px solid #1e3044;
       padding: 30px 8%;
@@ -294,23 +407,63 @@ background-repeat: no-repeat;
     </div>
   </section>
 <section class="section" id="fleet">
-  <h2>Our Fleet</h2>
+  <h2>Available Vehicles</h2>
   <p class="section-subtitle">
-    Travel in comfort, privacy and style.
+    Premium SUVs available for airport, hourly and private transportation.
   </p>
 
-  <div class="cards">
-    <div class="card">
-      <h3>Cadillac Escalade ESV</h3>
-      <p>Luxury SUV • Up to 6 passengers • Premium luggage capacity</p>
+  <div class="fleet-slider">
 
-      <a href="#booking"
-         style="display:inline-block; margin-top:18px; background:#d4af37;
-         color:#07111f; text-decoration:none; padding:12px 18px;
-         border-radius:8px; font-weight:bold;">
-        BOOK THIS VEHICLE
-      </a>
+    <div class="fleet-slide active">
+      <img src="7B674BF7-A2C4-4390-B41F-F8208BAAE35C.png"
+           alt="Cadillac Escalade ESV">
+      <div class="fleet-info">
+        <h3>Cadillac Escalade ESV</h3>
+        <p>Luxury SUV • Up to 6 passengers • Premium luggage capacity</p>
+        <a href="#booking">BOOK THIS VEHICLE</a>
+      </div>
     </div>
+
+    <div class="fleet-slide">
+      <img src="2B3C0C7A-E95B-4A5C-871A-72E24452E430.png"
+           alt="Chevrolet Suburban">
+      <div class="fleet-info">
+        <h3>Chevrolet Suburban</h3>
+        <p>Full-size luxury SUV • Spacious seating • Large luggage capacity</p>
+        <a href="#booking">BOOK THIS VEHICLE</a>
+      </div>
+    </div>
+
+    <div class="fleet-slide">
+      <img src="04445CD9-526C-4C97-90BC-211F987CC753.png"
+           alt="Lincoln Navigator L">
+      <div class="fleet-info">
+        <h3>Lincoln Navigator L</h3>
+        <p>Premium luxury SUV • Executive comfort • Extended cabin space</p>
+        <a href="#booking">BOOK THIS VEHICLE</a>
+      </div>
+    </div>
+
+    <div class="fleet-slide">
+      <img src="F83D4C55-0E8B-47CB-A6A0-F3995F2EB2E5.png"
+           alt="GMC Yukon XL">
+      <div class="fleet-info">
+        <h3>GMC Yukon XL</h3>
+        <p>Full-size premium SUV • Spacious interior • Excellent luggage capacity</p>
+        <a href="#booking">BOOK THIS VEHICLE</a>
+      </div>
+    </div>
+
+    <button class="fleet-arrow fleet-prev" onclick="changeFleet(-1)">‹</button>
+    <button class="fleet-arrow fleet-next" onclick="changeFleet(1)">›</button>
+
+    <div class="fleet-dots">
+      <span class="fleet-dot active" onclick="showFleet(0)"></span>
+      <span class="fleet-dot" onclick="showFleet(1)"></span>
+      <span class="fleet-dot" onclick="showFleet(2)"></span>
+      <span class="fleet-dot" onclick="showFleet(3)"></span>
+    </div>
+
   </div>
 </section>
  <section class="section" id="airports">
@@ -380,6 +533,42 @@ background-repeat: no-repeat;
   <footer>
     © 2026 Reliable Limousine. Your Destination, Our Responsibility.
   </footer>
+<script>
+  let fleetIndex = 0;
+  let fleetTimer;
 
+  function showFleet(index) {
+    const slides = document.querySelectorAll('.fleet-slide');
+    const dots = document.querySelectorAll('.fleet-dot');
+
+    if (!slides.length) return;
+
+    if (index >= slides.length) index = 0;
+    if (index < 0) index = slides.length - 1;
+
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+
+    fleetIndex = index;
+  }
+
+  function changeFleet(direction) {
+    showFleet(fleetIndex + direction);
+    restartFleetTimer();
+  }
+
+  function restartFleetTimer() {
+    clearInterval(fleetTimer);
+    fleetTimer = setInterval(() => {
+      showFleet(fleetIndex + 1);
+    }, 1000);
+  }
+
+  showFleet(0);
+  restartFleetTimer();
+</script>
 </body>
 </html>
