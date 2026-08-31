@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reliable Limousine</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #07111f;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      background: rgba(4, 12, 22, 0.95);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #d4af37;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 14px;
+    }
+
+    .book-btn {
+      background: #d4af37;
+      color: #07111f;
+      padding: 11px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .hero {
+      min-height: 78vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      background:
+        linear-gradient(rgba(5,12,22,.65), rgba(5,12,22,.9)),
+        radial-gradient(circle at center, #1b3550 0%, #07111f 65%);
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      color: #d4af37;
+      letter-spacing: 3px;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: 58px;
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      color: #c8d0da;
+      font-size: 19px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .hero-buttons a {
+      display: inline-block;
+      text-decoration: none;
+      margin: 8px;
+      padding: 14px 22px;
+      border-radius: 9px;
+      font-weight: bold;
+    }
+
+    .primary-btn {
+      background: #d4af37;
+      color: #07111f;
+    }
+
+    .secondary-btn {
+      border: 1px solid #d4af37;
+      color: #d4af37;
+    }
+
+    .booking-box {
+      width: 84%;
+      max-width: 1100px;
+      margin: -45px auto 60px;
+      background: #0d1a2a;
+      border: 1px solid rgba(212,175,55,.28);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    }
+
+    .booking-box h2 {
+      color: #d4af37;
+      margin-bottom: 18px;
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .booking-grid input,
+    .booking-grid select {
+      width: 100%;
+      padding: 13px;
+      background: #111f31;
+      color: white;
+      border: 1px solid #2d3d50;
+      border-radius: 8px;
+    }
+
+    .search-btn {
+      background: #d4af37;
+      color: #07111f;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .section {
+      padding: 70px 8%;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      color: #9eabb8;
+      margin-bottom: 35px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: #0d1a2a;
+      border: 1px solid #1f3145;
+      border-radius: 16px;
+      padding: 28px 20px;
+      text-align: left;
+    }
+
+    .card h3 {
+      color: #d4af37;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #aeb9c5;
+      line-height: 1.5;
+    }
+
+    footer {
+      border-top: 1px solid #1e3044;
+      padding: 30px 8%;
+      text-align: center;
+      color: #7f8b98;
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        display: none;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      .booking-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-box {
+        margin-top: -20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">RELIABLE LIMOUSINE</div>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">Fleet</a>
+      <a href="#">Airports</a>
+      <a href="#">Corporate</a>
+      <a href="#">Contact</a>
+      <a class="book-btn" href="#booking">Book Now</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">PREMIUM NYC CHAUFFEUR SERVICE</div>
+
+      <h1>Luxury Transportation, Redefined.</h1>
+
+      <p>
+        Professional private transportation for airport transfers,
+        hourly rides, corporate travel and special occasions.
+      </p>
+
+      <div class="hero-buttons">
+        <a class="primary-btn" href="#booking">BOOK YOUR RIDE</a>
+        <a class="secondary-btn" href="#booking">GET A QUOTE</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking-box" id="booking">
+    <h2>Book Your Ride</h2>
+
+    <div class="booking-grid">
+      <select>
+        <option>Trip Type</option>
+        <option>Airport Transfer</option>
+        <option>Point-to-Point</option>
+        <option>Hourly</option>
+      </select>
+
+      <input type="text" placeholder="Pickup Location">
+      <input type="text" placeholder="Drop-off Location">
+      <input type="date">
+      <button class="search-btn">SEARCH RIDE</button>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Our Services</h2>
+    <p class="section-subtitle">
+      Premium transportation tailored to your schedule.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Airport Transfers</h3>
+        <p>Private service to and from JFK, LGA and EWR.</p>
+      </div>
+
+      <div class="card">
+        <h3>Point-to-Point</h3>
+        <p>Professional transportation anywhere across New York.</p>
+      </div>
+
+      <div class="card">
+        <h3>Hourly Chauffeur</h3>
+        <p>Your vehicle and chauffeur available on your schedule.</p>
+      </div>
+
+      <div class="card">
+        <h3>Corporate Travel</h3>
+        <p>Reliable executive transportation for business clients.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Reliable Limousine. Your Destination, Our Responsibility.
+  </footer>
+
+</body>
+</html>
