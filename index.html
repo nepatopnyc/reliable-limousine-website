@@ -25,6 +25,10 @@ see hi<!DOCTYPE html>
       padding: 20px 8%;
       background: rgba(4, 12, 22, 0.95);
       border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+      position: sticky;
+top: 0;
+z-index: 1000;
+backdrop-filter: blur(8px);
     }
 
     .logo {
@@ -33,7 +37,18 @@ see hi<!DOCTYPE html>
       color: #d4af37;
       letter-spacing: 1px;
     }
+.logo img {
+  height: 70px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
 
+@media (max-width: 768px) {
+  .logo img {
+    height: 55px;
+  }
+}
     nav a {
       color: white;
       text-decoration: none;
@@ -578,7 +593,9 @@ background-repeat: no-repeat;
 <body>
 
   <header>
-    <div class="logo">RELIABLE LIMOUSINE</div>
+    <div class="logo">
+  <img src="gdp-logo.png" alt="GDP Reliable Limousine">
+</div>
 
     <nav>
       <a href="#">Home</a>
