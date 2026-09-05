@@ -882,6 +882,38 @@ if (reviewsTrack) {
 
   reviewsTrack.innerHTML = reviewHTML + reviewHTML;
 }
+  const reviewsWindow = document.querySelector(".reviews-window");
+
+let touchStartX = 0;
+let touchCurrentX = 0;
+
+if (reviewsWindow && reviewsTrack) {
+
+  reviewsWindow.addEventListener("touchstart", (e) => {
+    reviewsTrack.style.animationPlayState = "paused";
+    touchStartX = e.touches[0].clientX;
+  });
+
+  reviewsWindow.addEventListener("touchmove", (e) => {
+    touchCurrentX = e.touches[0].clientX;
+
+    const moveX = touchCurrentX - touchStartX;
+
+    reviewsTrack.style.transform =
+      `translateX(${moveX}px)`;
+  });
+
+  reviewsWindow.addEventListener("touchend", () => {
+    reviewsTrack.style.transform = "";
+    reviewsTrack.style.animationPlayState = "running";
+  });
+
+  reviewsWindow.addEventListener("touchcancel", () => {
+    reviewsTrack.style.transform = "";
+    reviewsTrack.style.animationPlayState = "running";
+  });
+
+}
 </script>
 </body>
 </html>
