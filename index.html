@@ -257,20 +257,27 @@ background-repeat: no-repeat;
 }
 .reviews-window {
   width: 100%;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   padding: 10px 0 18px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.reviews-window::-webkit-scrollbar {
+  display: none;
 }
 
 .reviews-track {
   display: flex;
   gap: 18px;
   width: max-content;
-  animation: moveReviews 48s linear infinite;
+  
 }
 
-.reviews-window:hover .reviews-track {
-  animation-play-state: paused;
-}
 
 .review-card {
   width: 340px;
@@ -329,15 +336,7 @@ background-repeat: no-repeat;
   line-height: 1.5;
 }
 
-@keyframes moveReviews {
-  from {
-    transform: translateX(0);
-  }
 
-  to {
-    transform: translateX(calc(-50% - 9px));
-  }
-}
 
 @media (max-width: 600px) {
   .review-card {
@@ -395,10 +394,20 @@ background-repeat: no-repeat;
     font-size: 26px;
   }
 }
-  .reviews-window {
+.reviews-window {
   width: 100%;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   padding: 10px 0 18px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.reviews-window::-webkit-scrollbar {
+  display: none;
 }
 
 .reviews-track {
@@ -821,7 +830,7 @@ function reviewTimeAgo(dateString) {
     (now.getFullYear() - reviewDate.getFullYear()) * 12 +
     (now.getMonth() - reviewDate.getMonth());
 
-  if (now.getDate() < reviewDate.getDate()) {
+  if (now.getDate() < ji reviewDate.getDate()) {
     months--;
   }
 
@@ -884,35 +893,48 @@ if (reviewsTrack) {
 }
   const reviewsWindow = document.querySelector(".reviews-window");
 
-let touchStartX = 0;
-let touchCurrentX = 0;
+let reviewsPaused = false;
+const reviewScrollSpeed = 0.45;
 
-if (reviewsWindow && reviewsTrack) {
+if (reviewsWindow) {
 
-  reviewsWindow.addEventListener("touchstart", (e) => {
-    reviewsTrack.style.animationPlayState = "paused";
-    touchStartX = e.touches[0].clientX;
-  });
+  function autoScrollReviews() {
+    if (!reviewsPaused) {
+      reviewsWindow.scrollLeft += reviewScrollSpeed;
 
-  reviewsWindow.addEventListener("touchmove", (e) => {
-    touchCurrentX = e.touches[0].clientX;
+      const halfway = reviewsWindow.scrollWidth / 2;
 
-    const moveX = touchCurrentX - touchStartX;
+      if (reviewsWindow.scrollLeft >= halfway) {
+        reviewsWindow.scrollLeft -= halfway;
+      }
+    }
 
-    reviewsTrack.style.transform =
-      `translateX(${moveX}px)`;
-  });
+    requestAnimationFrame(autoScrollReviews);
+  }
+
+  reviewsWindow.addEventListener("touchstart", () => {
+    reviewsPaused = true;
+  }, { passive: true });
 
   reviewsWindow.addEventListener("touchend", () => {
-    reviewsTrack.style.transform = "";
-    reviewsTrack.style.animationPlayState = "running";
-  });
+    setTimeout(() => {
+      reviewsPaused = false;
+    }, 500);
+  }, { passive: true });
 
   reviewsWindow.addEventListener("touchcancel", () => {
-    reviewsTrack.style.transform = "";
-    reviewsTrack.style.animationPlayState = "running";
+    reviewsPaused = false;
+  }, { passive: true });
+
+  reviewsWindow.addEventListener("mouseenter", () => {
+    reviewsPaused = true;
   });
 
+  reviewsWindow.addEventListener("mouseleave", () => {
+    reviewsPaused = false;
+  });
+
+  autoScrollReviews();
 }
 </script>
 </body>
