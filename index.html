@@ -22,7 +22,11 @@ see hi<!DOCTYPE html>
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 8%;
+      @media (max-width: 768px) {
+  header {
+    padding: 10px 2%;
+  }
+}
       background: rgba(4, 12, 22, 0.95);
       border-bottom: 1px solid rgba(212, 175, 55, 0.25);
       position: sticky;
@@ -34,7 +38,7 @@ backdrop-filter: blur(8px);
    .logo {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 6px;
 }
 
 .logo img {
@@ -56,12 +60,12 @@ backdrop-filter: blur(8px);
 
 @media (max-width: 768px) {
   .logo img {
-    height: 72px;
+    height: 82px;
   }
 
   .logo-name {
-    font-size: 14px;
-    letter-spacing: 1.2px;
+    font-size: 17px;
+    letter-spacing: 1px;
   }
 }
     nav a {
