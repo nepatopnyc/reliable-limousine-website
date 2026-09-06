@@ -31,22 +31,37 @@ z-index: 1000;
 backdrop-filter: blur(8px);
     }
 
-    .logo {
-      font-size: 22px;
-      font-weight: bold;
-      color: #d4af37;
-      letter-spacing: 1px;
-    }
+   .logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
 .logo img {
-  height: 70px;
+  height: 95px;
   width: auto;
   display: block;
   object-fit: contain;
 }
 
+.logo-name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #d4af37;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 @media (max-width: 768px) {
   .logo img {
-    height: 55px;
+    height: 72px;
+  }
+
+  .logo-name {
+    font-size: 14px;
+    letter-spacing: 1.2px;
   }
 }
     nav a {
